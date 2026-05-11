@@ -20,9 +20,6 @@ def add_jam_topic(topic):
     with open("jam_topics.txt",'a') as jam_file:
         jam_file.write(f"{topic}\n")
 
-# new_debate_topic = input("Enter new debate topic:")
-# add_debate_topic(new_debate_topic)
-# print(get_debate_topic())
 
 window = tkinter.Tk()
 window.title("Topic picker")
