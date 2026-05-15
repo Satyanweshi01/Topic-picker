@@ -7,7 +7,10 @@ import tkinter
 def get_debate_topic():
     with open("debate_topics.txt") as dt_file:
         content = dt_file.readlines()
-        canvas.itemconfig(topic_text,text=choice(content)) 
+        try: 
+            canvas.itemconfig(topic_text,text=choice(content)) 
+        except IndexError:
+            canvas.itemconfig(topic_text,text="The file is empty")
 
 # adding new topic to the debate_topics.txt
 def add_debate_topic(topic):
@@ -18,7 +21,10 @@ def add_debate_topic(topic):
 def get_jam_topic():
     with open("jam_topics.txt") as jam_file:
         content = jam_file.readlines()
-        canvas.itemconfig(topic_text,text=choice(content)) 
+        try: 
+            canvas.itemconfig(topic_text,text=choice(content)) 
+        except IndexError:
+            canvas.itemconfig(topic_text,text="The file is empty")
 
 # adding new topic to the debate_topics.txt
 def add_jam_topic(topic):
@@ -77,26 +83,26 @@ window.config(bg="sienna3")
 
 
 program_name = tkinter.Label(text="Pick and Speak",font=("Times new roman",32,"italic"),bg="sienna3",fg="spring green")
-program_name.pack()
+program_name.grid(row=1,column=1,columnspan=4,pady=20)
 
 # this is the place where we are going to see the output
 canvas = tkinter.Canvas(width=300,height=50)
-topic_text =canvas.create_text(100,45,text = "",font=("Arial",16,"bold"),fill="spring green")
-canvas.pack()
+topic_text =canvas.create_text(150,25,text = "",font=("Arial",12,"bold"),fill="Black")
+canvas.grid(row=2,column=1,columnspan=4,pady=20)
 
 # getting buttons
-new_debate_topic_button = tkinter.Button(text="New debate topic",command=get_debate_topic)
-new_debate_topic_button.pack()
+new_debate_topic_button = tkinter.Button(text="New debate topic",command=get_debate_topic,width=20)
+new_debate_topic_button.grid(column=1,row=3,columnspan=2,padx=10,pady=10)
 
-new_jam_topic_button = tkinter.Button(text="New jam topic",command=get_jam_topic)
-new_jam_topic_button.pack()
+new_jam_topic_button = tkinter.Button(text="New jam topic",command=get_jam_topic,width=20)
+new_jam_topic_button.grid(column=3,row=3,columnspan=2,padx=10,pady=10)
 
 # adding buttons
-add_debate_topic_button = tkinter.Button(text="Add debate topic",command=debate_input_win)
-add_debate_topic_button.pack()
+add_debate_topic_button = tkinter.Button(text="Add debate topic",command=debate_input_win,width=20)
+add_debate_topic_button.grid(column=1,row=4,columnspan=2,padx=10,pady=10)
 
-add_jam_topic_button = tkinter.Button(text="Add jam topic",command=jam_input_win)
-add_jam_topic_button.pack()
+add_jam_topic_button = tkinter.Button(text="Add jam topic",command=jam_input_win,width=20)
+add_jam_topic_button.grid(column=3,row=4,columnspan=2,padx=10,pady=10)
 
 # window ends
 window.mainloop()
