@@ -78,16 +78,16 @@ def jam_input_win():
 window = tkinter.Tk()
 window.title("Topic picker")
 window.minsize(width=350,height=350)
-window.config(bg="sienna3")
+window.config(bg="#1e1e1e")
 
 
 
-program_name = tkinter.Label(text="Pick and Speak",font=("Times new roman",32,"italic"),bg="sienna3",fg="spring green")
+program_name = tkinter.Label(text="Pick and Speak",font=("Times new roman",32,"italic"),bg="#1e1e1e",fg="#ffffff")
 program_name.grid(row=1,column=1,columnspan=4,pady=20)
 
 # this is the place where we are going to see the output
 canvas = tkinter.Canvas(width=300,height=50)
-topic_text =canvas.create_text(150,25,text = "",font=("Arial",12,"bold"),fill="Black")
+topic_text =canvas.create_text(150,25,text = "",font=("Arial",12,"bold"),fill="#1e1e1e")
 canvas.grid(row=2,column=1,columnspan=4,pady=20)
 
 # getting buttons
