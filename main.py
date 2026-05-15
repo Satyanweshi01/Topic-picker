@@ -25,6 +25,49 @@ def add_jam_topic(topic):
     with open("jam_topics.txt",'a') as jam_file:
         jam_file.write(f"{topic}\n")
 
+# secondary window for the dabate topic input
+def debate_input_win():
+    debate_topic_win = tkinter.Toplevel(window)
+    debate_topic_win.title("New debate topic")
+    debate_topic_win.geometry("200x80") # widthxheight
+
+    label = tkinter.Label(debate_topic_win,text="Write the topic")
+    label.pack()
+
+    input_box = tkinter.Entry(debate_topic_win)
+    input_box.pack()
+
+    def submit():
+        data = input_box.get()
+        if data != "":
+            add_debate_topic(data)  
+            debate_topic_win.destroy()
+    
+    submit_button = tkinter.Button(debate_topic_win, text="submit", command= submit)
+    submit_button.pack()
+
+# secondary window for the jam topic input
+def jam_input_win():
+    jam_topic_win = tkinter.Toplevel(window)
+    jam_topic_win.title("New jam topic")
+    jam_topic_win.geometry("200x80") # widthxheight
+
+    label = tkinter.Label(jam_topic_win,text="Write the topic")
+    label.pack()
+
+    input_box = tkinter.Entry(jam_topic_win)
+    input_box.pack()
+
+    def submit():
+        data = input_box.get()
+        if data != "":
+            add_jam_topic(data)
+            jam_topic_win.destroy()
+        
+    
+    submit_button = tkinter.Button(jam_topic_win, text="submit", command= submit)
+    submit_button.pack()
+
 # main window
 window = tkinter.Tk()
 window.title("Topic picker")
@@ -49,10 +92,10 @@ new_jam_topic_button = tkinter.Button(text="New jam topic",command=get_jam_topic
 new_jam_topic_button.pack()
 
 # adding buttons
-add_debate_topic_button = tkinter.Button(text="Add debate topic")
+add_debate_topic_button = tkinter.Button(text="Add debate topic",command=debate_input_win)
 add_debate_topic_button.pack()
 
-add_jam_topic_button = tkinter.Button(text="Add jam topic")
+add_jam_topic_button = tkinter.Button(text="Add jam topic",command=jam_input_win)
 add_jam_topic_button.pack()
 
 # window ends
